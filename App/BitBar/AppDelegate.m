@@ -30,12 +30,35 @@
 
 - (NSArray*) otherCopies { return [NSRunningApplication runningApplicationsWithBundleIdentifier:NSBundle.mainBundle.bundleIdentifier]; }
 
+
+
+// NOM VALE LOCALHOST:
+/*
+ primeira pantalha:
+ 
+ For security reasons, updates to BitBar need to be served over HTTPS and/or signed with an EdDSA key. See https://sparkle-project.org/documentation/ for more information.
+ */
+/*
+  You must change the feed URL (http://localhost:8888/bitbar.php) to use HTTPS or disable App Transport Security.
+
+  For more information:
+  https://sparkle-project.org/documentation/app-transport-security/
+ */
+
+
 - (void)applicationWillFinishLaunching:(NSNotification *)n {
   NSString *feedURLString;
 #ifdef DISTRO
-  feedURLString = @"https://bitbarapp.com/feeds/distro";
+//  feedURLString = @"https://bitbarapp.com/feeds/distro";
+  feedURLString = @"http://localhost:8888/bitbar.php";
+  
+//  feedURLString = @"https://tereborace.com/bitbar/sparkletestcast2.xml";
 #else
-  feedURLString = @"https://bitbarapp.com/feeds/bitbar";
+//  feedURLString = @"https://bitbarapp.com/feeds/bitbar";
+  feedURLString = @"http://localhost:8888/bitbar.php";
+  
+  // WORKS!!!
+//  feedURLString = @"https://tereborace.com/bitbar/sparkletestcast.xml";
 #endif
   
   SUUpdater *updater = [SUUpdater sharedUpdater];

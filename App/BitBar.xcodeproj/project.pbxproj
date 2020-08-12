@@ -310,6 +310,7 @@
 		F8D03BB41C3D95E600A64968 /* AHProxySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHProxySettings.m; sourceTree = "<group>"; };
 		F8D03BB51C3D95E600A64968 /* NSTask+useSystemProxies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTask+useSystemProxies.h"; sourceTree = "<group>"; };
 		F8D03BB61C3D95E600A64968 /* NSTask+useSystemProxies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+useSystemProxies.m"; sourceTree = "<group>"; };
+		FA4D856024E49BEC00309C1F /* BitBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BitBar-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +395,7 @@
 				05DADFFA183323DD00409786 /* Supporting Files */,
 				05DAE017183323DD00409786 /* BitBarTests */,
 				05DADFF1183323DD00409786 /* Products */,
+				FA4D856024E49BEC00309C1F /* BitBar-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -633,6 +635,7 @@
 				ORGANIZATIONNAME = "Bit Bar";
 				TargetAttributes = {
 					05DADFEF183323DD00409786 = {
+						LastSwiftMigration = 1160;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -1046,6 +1049,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "BitBar/BitBar-Info.plist";
@@ -1053,6 +1057,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.matryer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BitBar-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1061,6 +1068,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "BitBar/BitBar-Info.plist";
@@ -1068,6 +1076,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.matryer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BitBar-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

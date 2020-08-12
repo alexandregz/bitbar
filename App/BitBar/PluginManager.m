@@ -124,7 +124,11 @@ NSString *const AppleInterfaceThemeChangedNotification = @"AppleInterfaceThemeCh
 //
 //  // add troubleshooting item
 //  ADD_MENU(@"Report an Issue…",openHomepage,@"i",self);
-//  
+//
+  
+  //  // about, just to know version
+  ADD_MENU(@"About", aboutWindow,@"a",self);
+  
   // quit menu
   ADD_MENU(@"Quit",quit, @"q",self);
 }
@@ -261,6 +265,34 @@ NSString *const AppleInterfaceThemeChangedNotification = @"AppleInterfaceThemeCh
   if ([self beginSelectingPluginsDir] == YES) {
     [self reset];
   }
+}
+
+// programatically window
+- (void) aboutWindow{
+  
+  NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+  NSString *appVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+  NSString *msg = [NSString stringWithFormat:@"\n\nBitBar\nVersion: %@\nCopyright Mat Ryer", appVersion];
+    
+  NSRect contentSize = NSMakeRect(500.0, 500.0, 200.0, 100.0);
+//  NSUInteger windowStyleMask = NSTitledWindowMask | NSResizableWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask;
+  NSUInteger windowStyleMask = NSTitledWindowMask | NSClosableWindowMask;
+  NSWindow * window = [[NSWindow alloc] initWithContentRect:contentSize styleMask:windowStyleMask backing:NSBackingStoreBuffered defer:YES];
+  //window.backgroundColor = [NSColor whiteColor];
+  window.title = @"BitBar - About";
+  
+  NSView *view = [[NSTabView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+  NSTextView *textView = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, 200, 200)];
+ 
+  [textView sizeToFit];
+  textView.editable = false;
+  textView.selectable = true;
+  [textView setString:msg];
+  textView.alignment = NSTextAlignmentCenter;
+  
+  [view addSubview:textView];
+  [window setContentView:view];
+  [window makeKeyAndOrderFront:nil];
 }
 
 - (NSArray *)plugins {
